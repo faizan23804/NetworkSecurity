@@ -1,6 +1,6 @@
 '''
 The setup.py file is an essential part of packaging and distributing python projects. It is used by setup tools,
-to define the configuration of your project, such as its metadata, its dependencies, etc.
+to define the configuration of the project, such as its metadata, dependencies, etc.
 
 '''
 
