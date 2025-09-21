@@ -22,8 +22,8 @@ class CustomException(Exception):
 if __name__=="__main__":
 
     try:
-        logger.logging.info("Enter the try block")
-        a=1/0
+        logger.logging.info("Trying to open a file that does not exist")
+        with open("non_existing_file.txt", "r") as f:
+            content = f.read()
     except Exception as e:
         raise CustomException(e, sys)
-    
