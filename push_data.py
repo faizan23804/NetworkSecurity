@@ -47,6 +47,8 @@ class NetworkDataExtract():
             self.collection = self.database[self.collection]
             self.collection.insert_many(self.records)
 
+            logging.info("Conversion to Json Successfull")
+
             return(len(self.records))
         except Exception as e:
             raise CustomException(e, sys)
@@ -54,12 +56,16 @@ class NetworkDataExtract():
 
 
 if __name__=='__main__':
-    FILE_PATH="Network_data\phisingData.csv"
-    Database="NetworkSecurity"
-    Collection="NetworkDataset"
-    networkobj=NetworkDataExtract()
-    records=networkobj.csv_to_json(file_path=FILE_PATH)
-    #print(records)
-    number_of_records=networkobj.insert_data_to_mongodb(records,Database,Collection)
-    print(f"The Total Number of Records are: {number_of_records}")
+    try:
+        FILE_PATH="Network_data\phisingData.csv"
+        Database="NetworkSecurity"
+        Collection="NetworkDataset"
+        networkobj=NetworkDataExtract()
+        records=networkobj.csv_to_json(file_path=FILE_PATH)
+        #print(records)
+        number_of_records=networkobj.insert_data_to_mongodb(records,Database,Collection)
+        print(f"The Total Number of Records are: {number_of_records}")
+        logging.info("Dataset Pushed to Mongo Database.")
+    except Exception as e:
+        raise CustomException(e, sys)
 
