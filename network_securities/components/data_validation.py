@@ -4,7 +4,7 @@ from network_securities.logging.logger import logging
 from network_securities.entity.config_entity import DataIngestionConfig, DataValidationConfig
 from network_securities.entity.artifact_entity import DataIngestionArtifact, DataValidationArtifact
 from network_securities.constant.training_pipeline import SCHEMA_FILE_PATH
-from network_securities.utils.main_utils import read_yaml_file
+from network_securities.utils.main_utils import read_yaml_file,write_yaml_file
 
 import os
 import sys
@@ -95,6 +95,21 @@ class DataValidation:
                 error_message="Test Dataframe does not contain all columns. \n"
 
             #Checking Drifting of Data
-            status=self.detect_dataset_drift
+            status=self.detect_dataset_drift(base_df=train_df,current_df=test_df)
+            dir_path=os.path.dirname(self.data_validation_config.valid_train_file_path)
+            os.makedirs(dir_path,exist_ok=True)
+
+            train_df.to_csv(self.data_validation_config.valid_train_file_path,header=True,index=False)
+            test_df.to_csv(self.data_validation_config.valid_test_file_path,header=True,index=False)
+
+            data_validation_artifact=DataValidationArtifact(
+                validation_status=status,
+                valid_train_file_path=self.data_ingestion_artifact.trained_file_path,
+                valid_test_file_path=self.data_ingestion_artifact.test_file_path,
+                invalid_train_file_path=None,
+                invalid_test_file_path=None,
+                drift_report_file_path=self.data_validation_config.drift_report_file_path,
+            )
+            return data_validation_artifact
         except Exception as e:
             raise CustomException(e, sys)

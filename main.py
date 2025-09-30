@@ -1,9 +1,10 @@
 from network_securities.exceptions.exceptions import CustomException
 from network_securities.logging.logger import logging
 
-from network_securities.entity.config_entity import DataIngestionConfig
+from network_securities.entity.config_entity import DataIngestionConfig,DataValidationConfig
 from network_securities.entity.config_entity import TrainingPipelineConfig
 from network_securities.components.data_ingestion import DataIngestion
+from network_securities.components.data_validation import DataValidation
 import sys
 
 
@@ -11,10 +12,17 @@ import sys
 if __name__=='__main__':
     try:
         trainingpipelineconfig=TrainingPipelineConfig()
-        data_ingestion_config=DataIngestionConfig(trainingpipelineconfig)
-        data_ingestion=DataIngestion(data_ingestion_config)
-        logging.info("Initiating Data Ingestion")
-        data_ingestion_artifact=data_ingestion.initiate_data_ingestion()
-        print(data_ingestion_artifact)
+        dataingestionconfig=DataIngestionConfig(trainingpipelineconfig)
+        data_ingestion=DataIngestion(dataingestionconfig)
+        logging.info("Initiate the data ingestion")
+        dataingestionartifact=data_ingestion.initiate_data_ingestion()
+        logging.info("Data Initiation Completed")
+        print(dataingestionartifact)
+        data_validation_config=DataValidationConfig(trainingpipelineconfig)
+        data_validation=DataValidation(dataingestionartifact,data_validation_config)
+        logging.info("Initiate the data Validation")
+        data_validation_artifact=data_validation.initiate_data_validation()
+        logging.info("data Validation Completed")
+        print(data_validation_artifact)
     except  Exception as e:
         raise CustomException(e, sys)
