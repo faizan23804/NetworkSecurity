@@ -8,6 +8,7 @@ import pymongo
 from network_securities.exceptions.exceptions import CustomException
 from network_securities.logging.logger import logging
 
+
 from dotenv import load_dotenv
 
 load_dotenv()
