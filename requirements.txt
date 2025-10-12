@@ -10,5 +10,8 @@ pymongo[srv]==3.12
 pyaml
 dill
 mlflow
+dagshub
+fastapi
+uvicorn
 
 #-e .
