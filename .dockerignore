@@ -1,0 +1,99 @@
+# ====================================
+# 🧩 PYTHON & ENVIRONMENT FILES
+# ====================================
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+*.egg
+.env
+venv/
+.venv/
+ENV/
+env/
+pip-wheel-metadata/
+build/
+dist/
+
+# ====================================
+# 🧩 SYSTEM & EDITOR FILES
+# ====================================
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.log
+*.tmp
+*.swp
+*.bak
+
+# ====================================
+# 🧩 GIT & CI/CD FILES
+# ====================================
+.git/
+.gitignore
+.gitattributes
+.github/
+.gitlab/
+
+# ====================================
+# 🧩 MLFLOW / DAGSHUB / EXPERIMENT FILES
+# ====================================
+mlruns/
+mlartifacts/
+dagshub/
+mlflow.db
+*.mlmodel
+
+# ====================================
+# 🧩 LARGE ML ARTIFACTS (NOT NEEDED IN IMAGE)
+# ====================================
+artifacts/
+final_model/
+models/
+checkpoints/
+runs/
+logs/
+notebooks/
+*.pkl
+*.h5
+*.pt
+*.onnx
+*.joblib
+*.csv
+*.xlsx
+*.zip
+*.tar
+*.gz
+
+# ====================================
+# 🧩 CACHES AND TEMP FOLDERS
+# ====================================
+__pycache__/
+.cache/
+tmp/
+temp/
+*.tmp
+*.bak
+
+# ====================================
+# 🧩 TESTS / DATA / DOCS
+# ====================================
+tests/
+test/
+data/
+datasets/
+docs/
+reports/
+README.md
+
+# ====================================
+# 🧩 AWS / KEYS / CREDENTIALS
+# ====================================
+.aws/
+*.pem
+*.key
+*.json
+*.cfg
+*.ini
