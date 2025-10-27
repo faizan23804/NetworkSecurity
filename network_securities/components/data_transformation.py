@@ -67,8 +67,8 @@ class DataTransformation:
             y_train_feature=y_train_feature.replace(-1,0)
 
             #test features
-            X_test_features=train_df.drop(columns=[TARGET_COLUMN])
-            y_test_feature=train_df[TARGET_COLUMN]
+            X_test_features=test_df.drop(columns=[TARGET_COLUMN])
+            y_test_feature=test_df[TARGET_COLUMN]
             y_test_feature=y_test_feature.replace(-1,0)
 
             #Initiate Preprocessor(KNN-Imputer)
