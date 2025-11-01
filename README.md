@@ -64,7 +64,7 @@ Git
 
 
 # 1️⃣ Clone the repository
-git clone https://github.com/faizan23804/Building-Network-System-Security.git
+git clone https://github.com/faizan23804/NetworkSecurity.git
 cd Building-Network-System-Security
 
 # 2️⃣ Create virtual environment
